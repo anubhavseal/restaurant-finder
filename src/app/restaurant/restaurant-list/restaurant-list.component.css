@@ -1,11 +1,13 @@
-.item-list {
+.restaurant-list {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2%;
 }
 
 .example-card {
-  max-width: 400px;
+  max-width: 300px;
+  margin: 20px 10px;
 }
 
 .example-header-image {
