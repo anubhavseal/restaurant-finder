@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { RestaurantsFetchService } from "../../core/services/restaurants-fetch.service";
 
 @Component({
   selector: "app-restaurant-list",
@@ -7,7 +8,8 @@ import { Component, OnInit } from "@angular/core";
 })
 export class RestaurantListComponent implements OnInit {
   tiles;
-  constructor() {
+  restaurants;
+  constructor(private restaurantFetchService: RestaurantsFetchService) {
     this.tiles = [
       { text: "One", cols: 3, rows: 1, color: "lightblue" },
       { text: "Two", cols: 1, rows: 2, color: "lightgreen" },
@@ -20,5 +22,12 @@ export class RestaurantListComponent implements OnInit {
     ];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    debugger; 
+    this.restaurantFetchService.fetchRestaurantsForSelectedCity()
+    .subscribe(restaurants => {
+      console.log('restaurants', restaurants);
+      this.restaurants = restaurants['restaurants'];
+    });
+  }
 }
