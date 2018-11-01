@@ -7,9 +7,13 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatRippleModule } from "@angular/material/core";
 import { MatCardModule } from "@angular/material/card";
 import { MatListModule } from "@angular/material/list";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatInputModule,
     MatFormFieldModule,
@@ -17,9 +21,12 @@ import { MatListModule } from "@angular/material/list";
     MatRippleModule,
     MatCardModule,
     MatListModule,
+    MatAutocompleteModule
   ],
   declarations: [],
   exports: [
+    FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatInputModule,
     MatFormFieldModule,
@@ -27,6 +34,7 @@ import { MatListModule } from "@angular/material/list";
     MatRippleModule,
     MatCardModule,
     MatListModule,
+    MatAutocompleteModule
   ]
 })
 export class SharedModule {}

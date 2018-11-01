@@ -6,14 +6,18 @@
   align-items: center;
 }
 
-.search-field {
+.search-bar {
   width: 80%;
   display: flex;
   justify-content: center;
 }
 
-mat-form-field {
+.search-box {
   width: 60%;
+}
+
+mat-form-field {
+  width: 100%;
 }
 
 button[mat-raised-button] {
