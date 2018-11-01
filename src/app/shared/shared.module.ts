@@ -16,7 +16,7 @@ import { MatListModule } from "@angular/material/list";
     MatButtonModule,
     MatRippleModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
   ],
   declarations: [],
   exports: [
@@ -26,7 +26,7 @@ import { MatListModule } from "@angular/material/list";
     MatButtonModule,
     MatRippleModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
   ]
 })
 export class SharedModule {}
