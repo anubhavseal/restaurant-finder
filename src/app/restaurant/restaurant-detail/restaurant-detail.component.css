@@ -1,0 +1,120 @@
+.featured-image {
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.details {
+  color: #999999;
+}
+
+.details-title {
+  font-size: 12px;
+}
+
+.details-description {
+  color: #000;
+  font-size: 15px;
+}
+
+.price-menu-info {
+  display: flex;
+}
+
+.price {
+  align-self: center;
+  flex: 2;
+}
+
+.mat-card-header-text {
+  flex: 2;
+}
+
+.like {
+  align-self: center;
+}
+
+.like .mat-icon-button {
+  margin-right: 8px;
+}
+
+.grid {
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.cuisines-amenities {
+  display: flex;
+}
+
+.cuisines {
+  flex: 2;
+}
+
+.amenities {
+  flex: 1;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: center;
+}
+
+.amenity-item-name {
+  margin-left: 10px;
+  padding: 10px;
+}
+
+.amenity-unavailaible {
+  color: red;
+}
+
+.amenity-availaible {
+  color: green;
+}
+
+.navigate-back {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+  margin-top: 10px;
+}
+.more-reviews {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (min-width: 992px) {
+  .grid {
+    width: 85%;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 50px;
+  }
+  .grid-detail-item {
+    flex: 2;
+    margin-right: 45px;
+  }
+
+  .grid-list-item {
+    flex: 1;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .grid {
+    width: 85%;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    flex-direction: column;
+  }
+  .grid-detail-item {
+    flex: 1;
+    margin-bottom: 40px;
+  }
+
+  .grid-list-item {
+    flex: 1;
+  }
+}

@@ -1,3 +1,91 @@
-<p>
-  restaurant-detail works!
-</p>
+<div class="navigate-back">
+  <button mat-raised-button color="accent" routerLink="/list">Check other restaurants</button>
+</div>
+<div class="grid">
+  <mat-card class="grid-detail-item">
+    <mat-card-header>
+      <section style="flex: 2">
+        <mat-card-title>{{restaurant?.name}}</mat-card-title>
+        <mat-card-subtitle>{{restaurant?.location?.locality}}</mat-card-subtitle>
+      </section>
+      <button mat-icon-button>
+        <mat-icon color="primary" (click)="likeRestaurant()" aria-label="Example icon-button with a heart icon">share</mat-icon>
+      </button>
+    </mat-card-header>
+    <img mat-card-image src="{{restaurant?.featured_image}}" alt="{{restaurant?.name}}" class="featured-image">
+    <mat-card-content>
+      <div class="price-menu-info">
+        <div class="details details-description price">Average cost for two
+          {{restaurant?.currency}}&nbsp;{{restaurant?.average_cost_for_two}}
+        </div>
+        <a mat-fab color="accent" href="{{restaurant?.menu_url}}" target="_blank" class="menu">Menu</a>
+      </div>
+      <section class="price-menu-info">
+        <div class="price">
+          <p class="details details-title">Address</p>
+          <p class="details details-description">{{restaurant?.location?.address}}</p>
+        </div>
+        <div class="like">
+          <button mat-icon-button (click)="!restaurant?.liked ? likeRestaurant(): unlikeRestaurant()">
+            <mat-icon *ngIf="!restaurant?.liked " aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+            <mat-icon *ngIf="restaurant?.liked" color="accent" aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon color="primary" aria-label="Example icon-button with a heart icon">call</mat-icon>
+          </button>
+          <button mat-flat-button color="primary">{{restaurant?.user_rating?.aggregate_rating}}&nbsp;/&nbsp;5</button>
+        </div>
+      </section>
+      <hr>
+    </mat-card-content>
+    <mat-card-content>
+      <section class="cuisines-amenities">
+        <section class="cuisines">
+          <h4 style="padding-left: 20px;">Cuisines</h4>
+          <mat-list dense>
+            <mat-list-item *ngFor="let cuisine of restaurant?.cuisinelist">
+              <mat-icon matListIcon class="amenity-availaible">lens</mat-icon>
+              <h3 mat-line>{{cuisine}}</h3>
+            </mat-list-item>
+          </mat-list>
+        </section>
+        <section class="
+                amenities">
+          <h4>Amenities</h4>
+          <div class="amenity-item">
+            <mat-icon *ngIf="!restaurant?.has_online_delivery" class="amenity-unavailaible">highlight_off</mat-icon>
+            <mat-icon *ngIf="restaurant?.has_online_delivery" class="amenity-availaible">check_circle</mat-icon>
+            <span class="amenity-item-name">
+              Delivering online
+            </span>
+          </div>
+          <div class="amenity-item">
+            <mat-icon *ngIf="!restaurant?.is_delivering_now" class="amenity-unavailaible">highlight_off</mat-icon>
+            <mat-icon *ngIf="restaurant?.is_delivering_now" class="amenity-availaible">check_circle</mat-icon>
+            <span class="amenity-item-name">
+              Delivering now
+            </span>
+          </div>
+          <div class="amenity-item">
+            <mat-icon *ngIf="!restaurant?.has_table_booking" class="amenity-unavailaible">highlight_off</mat-icon>
+            <mat-icon *ngIf="restaurant?.has_table_booking" class="amenity-availaible">check_circle</mat-icon>
+            <span class="amenity-item-name">
+              Table booking
+            </span>
+          </div>
+        </section>
+      </section>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions align="end" class="clearfix">
+      <a mat-raised-button color="accent" *ngIf="restaurant?.photos_url" target="_blank" href="{{restaurant?.photos_url}}">Photos</a>
+    </mat-card-actions>
+  </mat-card>
+  <div class="grid-list-item">
+    <app-restaurant-reviews [paginate]="true">
+      <div class="more-reviews">
+        <button mat-raised-button color="accent" routerLink="/reviews">More Reviews </button>
+      </div>
+    </app-restaurant-reviews>
+  </div>
+</div>
