@@ -2,7 +2,7 @@
 
 It helps you look for nearby restaurants. It lets you select a restaurant to get further detailed information about it. It also displays the reviews from different users.
 
-## Redux Manged State
+# Redux Manged State
 ## Infinite Scrolling
 ## Angular
 
