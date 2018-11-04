@@ -3,37 +3,14 @@
     <form class="search-box">
       <mat-form-field appearance="outline">
         <mat-label>City</mat-label>
-        <input matInput
-               (input)="search($event.target.value)"
-               [formControl]="myControl"
-               [matAutocomplete]="auto"
-               placeholder="Search for your city">
+        <input matInput (input)="search($event.target.value)" [formControl]="myControl" [matAutocomplete]="auto"
+          placeholder="Search for your city">
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let city of cities"
-                      [value]="city.name" (click)='selectCity(city)'>
+          <mat-option *ngFor="let city of cities" [value]="city.name" (click)="selectCity(city)" (onSelectionChange)="selectCity(city)">
             {{city.name}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
     </form>
   </section>
-  <div class="popular-cities-container">
-    <mat-card>
-      <mat-card-title>Popular Cities</mat-card-title>
-      <mat-card-content>
-        <button mat-raised-button
-                color="primary"
-                (click)='test()'>Kolkata</button>
-        <button mat-raised-button
-                matRipple
-                color="accent">Mumbai</button>
-        <button mat-raised-button
-                color="primary">Delhi</button>
-        <button mat-raised-button
-                color="accent">Pune</button>
-        <button mat-raised-button
-                color="primary">Bangalore</button>
-      </mat-card-content>
-    </mat-card>
-  </div>
 </div>

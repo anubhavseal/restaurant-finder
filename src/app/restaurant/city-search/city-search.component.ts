@@ -1,31 +1,37 @@
-import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Component } from "@angular/core";
 import { FormControl } from "@angular/forms";
-import { RestaurantsFetchService } from "../../core/services/restaurants-fetch.service";
 import { Router } from "@angular/router";
+import { Store, Select } from "@ngxs/store";
+import { GetCities, SetSelectedCity } from "./city-search.action";
+import { Observable } from "rxjs";
+import { withLatestFrom } from "rxjs/operators";
+
 @Component({
   selector: "app-city-search",
   templateUrl: "./city-search.component.html",
   styleUrls: ["./city-search.component.css"]
 })
-export class CitySearchComponent implements OnInit {
+export class CitySearchComponent {
   myControl = new FormControl();
-  cities = [ ];
-  constructor(private http: HttpClient, private restaurant: RestaurantsFetchService, private router: Router) {}
+  cities = [];
+
+  @Select(state => state.city.cityList)
+  cities$: Observable<any>;
+
+  constructor(private store: Store, private router: Router) {}
 
   search(searchKey) {
-    this.http.get(`/cities?q=${searchKey}`).subscribe(res => {
-      this.cities = res["location_suggestions"].map(city => {
-        return city;
+    this.store
+      .dispatch(new GetCities(searchKey))
+      .pipe(withLatestFrom(this.cities$))
+      .subscribe(([, cities]) => {
+        this.cities = cities;
       });
-    });
   }
 
   selectCity(selcetedCity) {
-    console.log(selcetedCity);
-    this.restaurant.setSelectedCity(selcetedCity);
-    this.router.navigate(['/list']);
+    this.store
+      .dispatch(new SetSelectedCity(selcetedCity))
+      .subscribe(() => this.router.navigate(["/list"]));
   }
-
-  ngOnInit() {}
 }
