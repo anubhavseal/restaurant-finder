@@ -2,9 +2,17 @@
 
 It helps you look for nearby restaurants. It lets you select a restaurant to get further detailed information about it. It also displays the reviews from different users.
 
-# Redux Manged State
+## Redux Manged State
+
+The appplication state is managed followinf Redux Approach using ngxs library.
+
 ## Infinite Scrolling
+
+Chunks of list are lazily loaded on scroll
+
 ## Angular
+
+Angular is used as the frontend framework
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
