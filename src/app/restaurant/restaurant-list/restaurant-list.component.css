@@ -1,16 +1,104 @@
 .restaurant-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 92%;
+  padding-top: 50px;
+  margin: auto;
+  max-width: 1723px;
+}
+
+.restaurant-card {
+  display: flex;
+  width: 30%;
+  border-radius: 5px;
+  box-shadow: 10px 18px 15px 0px #f9f9f9;
+  transition: all 0.2s;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  margin-bottom: 35px;
+  cursor: pointer;
+}
+
+.restaurant-card:hover {
+  box-shadow: 2px 3px 2px 0px #f5f2f2;
+}
+
+.restaurant-card-thumb {
+  flex: 0.5;
+}
+
+.restaurant-card-thumb > img {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.restaurant-card-content {
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 2%;
+  padding: 0 10px;
 }
 
-.example-card {
-  max-width: 300px;
-  margin: 20px 10px;
+.restaurant-card-content .mat-icon-button {
+  margin-bottom: 8px;
 }
 
-.example-header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-  background-size: cover;
+.restaurant-card-info {
+  display: flex;
+  align-items: baseline;
+}
+
+.liked {
+  font-size: 34px;
+}
+
+.navigate-back {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  .restaurant-list {
+    padding: 10px;
+    width: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  .restaurant-card {
+    width: auto;
+    flex-direction: column;
+  }
+  .restaurant-card-thumb {
+    flex: 0.4;
+  }
+  .restaurant-card-thumb img {
+    width: 100%;
+  }
+  .restaurant-card-content {
+    flex: 0.6;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1366px) {
+  .restaurant-list {
+    width: 88%;
+    justify-content: space-evenly;
+  }
+  .restaurant-card {
+    flex-direction: column;
+    width: auto;
+  }
+  .restaurant-card-thumb {
+    margin-right: 0px;
+  }
+  .restaurant-card-thumb img {
+    border-radius: 5px;
+  }
+  .restaurant-card-content {
+    max-width: 200px;
+  }
 }
