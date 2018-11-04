@@ -12,7 +12,3 @@ html {
 body {
   margin: 0px;
 }
-
-.mat-list .mat-list-item [class="mat-line"] {
-  white-space: normal !important;
-}

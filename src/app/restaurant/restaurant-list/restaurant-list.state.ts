@@ -9,7 +9,7 @@ import {
   ClearSelectedRestaurantDetails,
   ClearAllRestaurantsAndSelecetdRestaurant
 } from "./restaurant-list.action";
-import { RestaurantService } from "src/app/core/services/restaurants-fetch.service";
+import { RestaurantService } from "src/app/core/services/restaurant.service";
 import { tap } from "rxjs/operators";
 
 @State({
