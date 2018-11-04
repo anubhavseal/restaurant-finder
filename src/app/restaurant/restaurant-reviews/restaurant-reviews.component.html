@@ -1,13 +1,24 @@
 <div class='reviews-list'>
-  <mat-list>
-    <h3 mat-subheader>Reviews</h3>
-    <mat-list-item *ngFor="let folder of folders">
-      <img matListAvatar
-           src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-           alt="...">
-      <h4 mat-line>{{folder.name}}</h4>
-      <p mat-line> {{folder.updated | date}} </p>
-      <mat-divider></mat-divider>
+  <h4 class="mat-h1 mat-headline">Critics Speaks...</h4>
+  <ng-content></ng-content>
+  <mat-list *ngFor="let review of reviews">
+    <mat-list-item>
+      <img matListAvatar src="{{review.review.user.profile_image}}" alt="{{review.review.user.name}}">
+      <h4 mat-line>{{review.review.user.name}}</h4>
+      <p mat-line style.color="#{{review.review.user.foodie_color}}">Foodie Meter:
+        &nbsp;{{review.review.user.foodie_level}}</p>
     </mat-list-item>
+    <mat-list-item>
+      <h4 mat-line style.color="#{{review.review.rating_color}}">
+        Says: {{review.review.rating_text}}
+        and
+        Rated&nbsp;&nbsp;&nbsp;<button mat-stroked-button style.color="#{{review.review.rating_color}}"
+          style.border-color="#{{review.review.user.foodie_color}}">{{review.review.rating}}</button>
+      </h4>
+    </mat-list-item>
+    <div style="padding-left: 16px; margin-top: 10px; margin-bottom: 10px;">
+      {{review.review.review_text}}
+    </div>
+    <mat-divider></mat-divider>
   </mat-list>
 </div>

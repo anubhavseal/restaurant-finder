@@ -1,39 +1,35 @@
-import { Component, OnInit } from "@angular/core";
-export interface Section {
-  name: string;
-  updated: Date;
-}
+import { Component, OnInit, HostListener, Input } from "@angular/core";
+import { Observable } from "rxjs";
+import { Select } from "@ngxs/store";
+
 @Component({
   selector: "app-restaurant-reviews",
   templateUrl: "./restaurant-reviews.component.html",
   styleUrls: ["./restaurant-reviews.component.css"]
 })
 export class RestaurantReviewsComponent implements OnInit {
-  folders: Section[] = [
-    {
-      name: "Photos",
-      updated: new Date("1/1/16")
-    },
-    {
-      name: "Recipes",
-      updated: new Date("1/17/16")
-    },
-    {
-      name: "Work",
-      updated: new Date("1/28/16")
-    }
-  ];
-  notes: Section[] = [
-    {
-      name: "Vacation Itinerary",
-      updated: new Date("2/20/16")
-    },
-    {
-      name: "Kitchen Remodel",
-      updated: new Date("1/18/16")
-    }
-  ];
+  @Input()
+  paginate: boolean;
+  reviews;
+
+  @Select(store => store.restaurant.selectedRestaurantReviews)
+  reviews$: Observable<any>;
   constructor() {}
 
-  ngOnInit() {}
+  @HostListener("window:scroll", ["$event"])
+  fetchNextSetOfComments() {
+    if (
+      window.innerHeight + Math.ceil(window.pageYOffset) >=
+        document.body.offsetHeight - 2 &&
+      !this.paginate
+    ) {
+      this.reviews = [...this.reviews, ...this.reviews];
+    }
+  }
+
+  ngOnInit() {
+    this.reviews$.subscribe(reviews => {
+      this.reviews = reviews;
+    });
+  }
 }
