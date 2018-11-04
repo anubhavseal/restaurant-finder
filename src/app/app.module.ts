@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxsModule } from "@ngxs/store";
 
 import { AppComponent } from "./app.component";
 import { RouterModule } from "@angular/router";
@@ -9,6 +10,8 @@ import { SharedModule } from "./shared/shared.module";
 import { HttpClientModule } from "@angular/common/http";
 import { httpInterceptorProviders } from "./core/interceptors";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RestaurantListState } from "./restaurant/restaurant-list/restaurant-list.state";
+import { CityState } from "./restaurant/city-search/city-search.state";
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,13 +22,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ReactiveFormsModule,
     SharedModule,
     HttpClientModule,
-
+    NgxsModule.forRoot([RestaurantListState, CityState]),
     RestaurantModule,
     RouterModule.forRoot([
       {
         path: "",
         pathMatch: "full",
-        redirectTo: "search"
+        redirectTo: "/search"
       }
     ])
   ],

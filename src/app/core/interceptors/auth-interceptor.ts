@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const authReq = req.clone({
-      headers: req.headers.set("user-key", "97a8408bc9e1f6b159ad1936b88593bb")
+      headers: req.headers.set("user-key", "fac4efd7c2d2a60f89204dfcbd11d108")
     });
     return next.handle(authReq);
   }
